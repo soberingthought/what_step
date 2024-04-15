@@ -1,0 +1,41 @@
+<html>
+<head>
+  <title>Friday 1PM Step Study - What Step?</title>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+  <script>
+    var DateTime = luxon.DateTime;
+    function pacific_dt(str) {
+      return(DateTime.fromFormat(
+        str + " America/Los_Angeles",
+        "yyyy-MM-dd'T'HH:mm:ss z"
+      ));
+    }
+    function get_step(some_date) {
+      console.log(some_date.toString())
+      start_date = pacific_dt("2024-02-02T14:00:00")
+      num_weeks = some_date.diff(start_date, 'weeks').toObject()['weeks']
+      console.log(num_weeks);
+      mod_weeks = num_weeks % 24;
+      console.log(mod_weeks);
+      step = Math.floor(mod_weeks / 2) + 1;
+      console.log(step);
+      console.log(mod_weeks % 2);
+      part = (Math.floor(mod_weeks % 2) == 0) ? "(part 1)" : "(part 2)";
+      str = "Step " + step + " " + part;
+      console.log(str);
+      return str;
+    }
+
+    function todays_step() {
+      return get_step(DateTime.utc());
+    }
+
+    console.log(get_step(pacific_dt("2024-07-19T13:59:59")) == "Step 12 (part 2)");
+    console.log(get_step(pacific_dt("2024-07-19T14:00:01")) == "Step 1 (part 1)");
+    document.write('<h1>' + todays_step() + '</h1>');
+  </script>
+  
+</body>
+</html>
