@@ -14,7 +14,7 @@
     }
     function get_step(some_date) {
       console.log(some_date.toString())
-      start_date = pacific_dt("2024-02-02T14:00:00")
+      start_date = pacific_dt("2024-01-26T14:00:00")
       num_weeks = some_date.diff(start_date, 'weeks').toObject()['weeks']
       console.log(num_weeks);
       mod_weeks = num_weeks % 24;
@@ -32,8 +32,8 @@
       return get_step(DateTime.utc());
     }
 
-    console.log(get_step(pacific_dt("2024-07-19T13:59:59")) == "Step 12 (part 2)");
-    console.log(get_step(pacific_dt("2024-07-19T14:00:01")) == "Step 1 (part 1)");
+    console.log(get_step(pacific_dt("2024-07-12T13:59:59")) == "Step 12 (part 2)");
+    console.log(get_step(pacific_dt("2024-07-12T14:00:01")) == "Step 1 (part 1)");
     document.write('<h1>' + todays_step() + '</h1>');
   </script>
   
