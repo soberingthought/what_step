@@ -29,13 +29,12 @@
     }
 
     function todays_step() {
-      return get_step(DateTime.utc());
+      return get_step(DateTime.local().setZone("America/Los_Angeles"));
     }
 
     console.log(get_step(pacific_dt("2024-07-12T13:59:59")) == "Step 12 (part 2)");
     console.log(get_step(pacific_dt("2024-07-12T14:00:01")) == "Step 1 (part 1)");
     document.write('<h1>' + todays_step() + '</h1>');
   </script>
-  
 </body>
 </html>
